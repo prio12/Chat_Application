@@ -8,9 +8,15 @@ function notFoundHandler(req, res, next) {
 
 //default error handler
 function errorHandler(error, req, res, next) {
-  res.render('error', {
-    title: 'Error page!',
-  });
+  res.locals.error = error;
+  res.status(error.status || 500);
+  if (res.locals.html) {
+    res.render('error', {
+      title: 'Error page',
+    });
+  } else {
+    res.json(res.locals.error);
+  }
 }
 
 module.exports = {

@@ -17,7 +17,7 @@ dotenv.config();
 //database connection
 const connectToDatabase = async () => {
   try {
-    mongoose.connect(
+    await mongoose.connect(
       `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0.8l4usvv.mongodb.net/chat_application?retryWrites=true&w=majority&appName=Cluster0`
     );
     console.log('connected to mongodb successfully!');
